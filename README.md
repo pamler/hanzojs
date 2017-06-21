@@ -105,7 +105,7 @@ app.use({
 
 ---
 ### 路由配置
-hanzojs最新版本的路由采用的是react-navigation，具体使用方式和react-navigation一致，api参见[react-navigation](https://reactnavigation.org)，1.x以下版本采用的是[react-native-router-flux](https://github.com/aksonov/react-native-router-flux)的路由风格
+hanzojs最新版本的路由采用的是react-navigation，具体使用方式和react-navigation一致，api参见[react-navigation](https://reactnavigation.org)，1.x以下版本采用的是[react-native-router-flux](https://github.com/aksonov/react-native-router-flux)的路由风格
 #### Example:
 
 ```
@@ -143,7 +143,7 @@ module.exports = (modules) => StackNavigator({
 - index.js为模块入口文件，主要是connect，暴露出模块给hanzo注册
 
 #### index.js
-负责将整个模块暴露给hanzojs，将view层和reducer，initialState，以及view层所需的调用的方法通过connect绑定到一起。一个稍微复杂的todolist的示例：
+负责将整个模块暴露给hanzojs，将view层和reducer，initialState，以及view层所需的调用的方法通过connect绑定到一起。一个稍微复杂的todolist的示例：
 
 ```
 import { connect } from 'hanzojs'
@@ -170,7 +170,7 @@ module.exports = {
 }
 ```
 
-module.exports暴露一个JS模块，这个模块包含两个必须的属性，一个是*models*，一个是*views*。models一般只接受model.js导出的model就可以了，views接受一个或若干个使用connect处理过的view，键值对存放。
+module.exports暴露一个JS模块，这个模块包含两个必须的属性，一个是*models*，一个是*views*。models一般只接受model.js导出的model就可以了，views接受一个或若干个使用connect处理过的view，键值对存放。
 
 connect接受两个参数，一个是类似redux中常使用的mapStateToProps，一个是model，主要功能类似于mapDispatchToProps
 
@@ -201,15 +201,15 @@ handlers: [
 ]
 ```
 
-第一种顾名思义，直接接受一个字符串，将所传入的参数直接dispatch出去
+第一种顾名思义，直接接受一个字符串，将所传入的参数直接dispatch出去
 
-第二种接受一个action属性，代表这个handler具体的实现（例如和后台交互等），具体的实现一般放在action.js
+第二种接受一个action属性，代表这个handler具体的实现（例如和后台交互等），具体的实现一般放在action.js
 
 第三种接受一个handler属性，一个字符串，代表跨模块调用其他模块的方法。例如要调用A模块下的b方法，handler直接写'A.b'
 
 - reducers也是基于redux-actions，由键值对组成。键为事件名称，和handler里的方法名一一对应，值就是一个reducer处理函数。有两点需要注意：
-  1. 如果有redux中间件的集成，事件名称和handler名称有可能不见得是一一对应关系。比如引入了redux-promise-middleware中间件，那么事件名称需要在handler名称后面加上相应的异步状态后缀
-  2. 如果需要处理一些跨模块的事件或者全局事件，事件需要以 / 作为前缀
+  1. 如果有redux中间件的集成，事件名称和handler名称有可能不见得是一一对应关系。比如引入了redux-promise-middleware中间件，那么事件名称需要在handler名称后面加上相应的异步状态后缀
+  2. 如果需要处理一些跨模块的事件或者全局事件，事件需要以 / 作为前缀
 一个完整的todolist的model的示例如下：
 
 ```
