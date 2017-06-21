@@ -119,14 +119,14 @@ module.exports = (modules) => StackNavigator({
           screen: modules.UserRegister,
           path: 'register',
           navigationOptions: {
-            title: '欢迎注册链尚网'
+            title: '欢迎注册'
           }
         },
         Login: {
           screen: modules.UserLogin,
           path: '',
           navigationOptions: {
-            title: '欢迎登陆链尚网'
+            title: '欢迎登陆'
           }
         }
       })
@@ -207,7 +207,7 @@ handlers: [
 
 第三种接受一个handler属性，一个字符串，代表跨模块调用其他模块的方法。例如要调用A模块下的b方法，handler直接写'A.b'
 
-- reducers也是基于redux-actions，由键值对组成。键为事件名称，和handler里的方法名一一对应，值就是一个reducer处理函数。有两点需要注意：
+- reducers也是基于redux-actions，由键值对组成。键为事件名称，和handler里的方法名一一对应，值就是一个reducer处理函数。有两点需要注意：
   1. 如果有redux中间件的集成，事件名称和handler名称有可能不见得是一一对应关系。比如引入了redux-promise-middleware中间件，那么事件名称需要在handler名称后面加上相应的异步状态后缀
   2. 如果需要处理一些跨模块的事件或者全局事件，事件需要以 / 作为前缀
 一个完整的todolist的model的示例如下：
@@ -310,7 +310,6 @@ module.exports = {
 
 ## DEMO
 - [todoListHanzojs](http://git.lsfash.cn/react-native/todoListHanzojs)
-- [CRM](http://git.lsfash.cn/react-native/react-native-crm-new)
 
 ## 其他学习
 - [redux](http://cn.redux.js.org/)
