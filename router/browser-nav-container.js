@@ -23,7 +23,7 @@ function initRoute() {
   const id = (state && state.id > 0) ? state.id : genStateID();
   setCurrentStateID(id);
   if (!state) {
-    history.replaceState({  id: id }, '', window.location.href);
+    history.replaceState({ id: id }, '', window.location.href);
   }
   initRoute = (empty) => empty;
 }
@@ -67,6 +67,7 @@ export default NavigationAwareView => {
           NavigationAwareView.router,
           window.location.pathname.substr(1)
         );
+        action.fromPopstate = true;
         if (action) this.dispatch(action);
       };
     }
@@ -103,7 +104,7 @@ export default NavigationAwareView => {
         action,
         this.state
       );
-
+      state.popstate = action.fromPopstate
       if (!state) {
         console.log('Dispatched action did not change state: ', { action });
       } else if (console.group) {
@@ -133,7 +134,7 @@ export default NavigationAwareView => {
     };
     render() {
       const state = history.state;
-      const isForward = (state && state.id> getCurrentStateID())
+      const isForward = (state && state.id > getCurrentStateID()) && !this.state.popstate
       return (
         <NavigationAwareView
           isForward={isForward}
