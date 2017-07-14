@@ -1,6 +1,6 @@
 {
   "name": "hanzojs",
-  "version": "1.0.0-beta.14",
+  "version": "1.0.0-beta.16",
   "description": "react/react-native + redux",
   "main": "index.js",
   "scripts": {
